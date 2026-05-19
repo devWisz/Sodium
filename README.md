@@ -1,1 +1,1 @@
-Sodium is a compiler built on rust that complies the stuffs
+Sodium checks your spelling 
