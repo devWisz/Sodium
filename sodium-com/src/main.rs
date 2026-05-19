@@ -12,4 +12,22 @@ fn main ()-> io::Result<()>{
         println!("Usage: cargo run --<path_to_file_to_check>");
         return Ok();
     }
+
+    let file_to_check = &args[1];
+
+    println!("Loading dictionary.......");
+    let dictionary_path = "dictionary.txt";
+    let dictionary = match load_dictionary(dictionary_path){
+        Ok(dict) => dict,
+        Err(e) => {
+            eprintln!("Error loading dictionary '{}' :{}",dictionary_path,e);
+       return Err(e);
+        }
+    };
+
+
+    println!("Checking spelling for: {}..\n,file to check");
+    check_file_spelling(file_to_check, &dictionary)?;
+
+    Ok(())
 }
