@@ -48,4 +48,18 @@ if !word.is_empty(){
 
     }
     Ok(dictionary)
+} 
+
+fn check_file_spelling<P: AsRef<Path>>(path:P, dictionary: &HashSet<String>)->
+io :; Result <()> {
+    let file = File :: open(path)?;
+    let reader = BufReader ::  new(file);
+    let mut mistake_found = 0;
+
+    for (line_num,line_result) in reader.lines().enumerate(){
+        let line = line_result?;
+
+        let words = line.split_whitespace();
+    }
 }
+
