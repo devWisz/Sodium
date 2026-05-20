@@ -30,4 +30,14 @@ fn main ()-> io::Result<()>{
     check_file_spelling(file_to_check, &dictionary)?;
 
     Ok(())
-}
+} 
+
+
+fn load_dictionary<P: AsRef<Path>>(path:P) -> io::Result<HrashSet<string>>{
+
+    let file = File:: open (path)?;
+    let reader = BufReader ::new(file);
+    let mut dictionary = HashSet:: new ();
+
+    
+} 
