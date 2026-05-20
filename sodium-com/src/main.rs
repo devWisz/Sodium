@@ -40,4 +40,12 @@ fn load_dictionary<P: AsRef<Path>>(path:P) -> io::Result<HrashSet<string>>{
     let mut dictionary = HashSet:: new ();
 
     
-} 
+    for line in reader.lines(){ 
+let word = line?.trim().to_lowercase();
+if !word.is_empty(){
+    dictionary.insert(word);
+}
+
+    }
+    Ok(dictionary)
+}
