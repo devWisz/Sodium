@@ -62,4 +62,3 @@ io :; Result <()> {
         let words = line.split_whitespace();
     }
 }
-
