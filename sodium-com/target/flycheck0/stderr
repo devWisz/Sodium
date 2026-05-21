@@ -1,0 +1,68 @@
+   0.214361700s  INFO prepare_target{force=false package_id=sodium-com v0.1.0 (C:\Users\sanke\Desktop\Sodium\sodium-com) target="sodium-com"}: cargo::core::compiler::fingerprint: fingerprint error for sodium-com v0.1.0 (C:\Users\sanke\Desktop\Sodium\sodium-com)/Check { test: false }/TargetInner { name: "sodium-com", doc: true, ..: with_path("C:\\Users\\sanke\\Desktop\\Sodium\\sodium-com\\src\\main.rs", Edition2024) }
+   0.214463100s  INFO prepare_target{force=false package_id=sodium-com v0.1.0 (C:\Users\sanke\Desktop\Sodium\sodium-com) target="sodium-com"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\sanke\Desktop\Sodium\sodium-com\target\debug\.fingerprint\sodium-com-cf713617b6dc26a4\bin-sodium-com`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+             at /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf/library\std\src\..\..\backtrace\src\backtrace/win64.rs:85:14
+   1: std::backtrace::Backtrace::capture
+             at /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf/library\std\src/backtrace.rs:296:9
+   2: <std::io::error::Error as anyhow::context::ext::StdError>::ext_context::<alloc::string::String>
+   3: cargo_util::paths::read
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   7: cargo::ops::cargo_compile::compile_ws
+   8: cargo::ops::cargo_compile::compile_with_exec
+   9: cargo::ops::cargo_compile::compile
+  10: cargo::commands::check::exec
+  11: <cargo::cli::Exec>::exec
+  12: cargo::cli::main
+  13: cargo::main
+  14: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  15: std::rt::lang_start::<()>::{closure#0}
+  16: std::rt::lang_start_internal
+             at /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf/library\core\src\ops/function.rs:287:21
+  17: main
+  18: __tmainCRTStartup
+  19: mainCRTStartup
+  20: <unknown>
+  21: <unknown>
+   0.248849400s  INFO prepare_target{force=false package_id=sodium-com v0.1.0 (C:\Users\sanke\Desktop\Sodium\sodium-com) target="sodium-com"}: cargo::core::compiler::fingerprint: fingerprint error for sodium-com v0.1.0 (C:\Users\sanke\Desktop\Sodium\sodium-com)/Check { test: true }/TargetInner { name: "sodium-com", doc: true, ..: with_path("C:\\Users\\sanke\\Desktop\\Sodium\\sodium-com\\src\\main.rs", Edition2024) }
+   0.248932600s  INFO prepare_target{force=false package_id=sodium-com v0.1.0 (C:\Users\sanke\Desktop\Sodium\sodium-com) target="sodium-com"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\sanke\Desktop\Sodium\sodium-com\target\debug\.fingerprint\sodium-com-b38f76a85db594b0\test-bin-sodium-com`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+             at /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf/library\std\src\..\..\backtrace\src\backtrace/win64.rs:85:14
+   1: std::backtrace::Backtrace::capture
+             at /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf/library\std\src/backtrace.rs:296:9
+   2: <std::io::error::Error as anyhow::context::ext::StdError>::ext_context::<alloc::string::String>
+   3: cargo_util::paths::read
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   7: cargo::ops::cargo_compile::compile_ws
+   8: cargo::ops::cargo_compile::compile_with_exec
+   9: cargo::ops::cargo_compile::compile
+  10: cargo::commands::check::exec
+  11: <cargo::cli::Exec>::exec
+  12: cargo::cli::main
+  13: cargo::main
+  14: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  15: std::rt::lang_start::<()>::{closure#0}
+  16: std::rt::lang_start_internal
+             at /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf/library\core\src\ops/function.rs:287:21
+  17: main
+  18: __tmainCRTStartup
+  19: mainCRTStartup
+  20: <unknown>
+  21: <unknown>
+    Checking sodium-com v0.1.0 (C:\Users\sanke\Desktop\Sodium\sodium-com)
+error: could not compile `sodium-com` (bin "sodium-com") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `sodium-com` (bin "sodium-com" test) due to 1 previous error

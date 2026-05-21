@@ -60,5 +60,16 @@ io :; Result <()> {
         let line = line_result?;
 
         let words = line.split_whitespace();
+
+        for raw_word in words {
+
+            let cleaned word: String = raw_word 
+            .chars()
+            .filter(|c| c.alphabetic())
+            .collect ::<String>()
+            .to_lowercase();
+
+        if cleaned_word.is_empty (){
+continue
+        }
     }
-}
