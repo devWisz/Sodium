@@ -7,7 +7,7 @@ use std::path::Path;
 
 fn main ()-> io::Result<()>{
 
-    let args: Vec<String>== env :: args().collect();
+    let args: Vec<String> = env :: args().collect();
     if args.len()<2 {
         println!("Usage: cargo run --<path_to_file_to_check>");
         return Ok();
@@ -51,19 +51,20 @@ if !word.is_empty(){
 } 
 
 fn check_file_spelling<P: AsRef<Path>>(path:P, dictionary: &HashSet<String>)->
-io :; Result <()> {
+io :: Result <()> {
     let file = File :: open(path)?;
     let reader = BufReader ::  new(file);
     let mut mistake_found = 0;
 
-    for (line_num,line_result) in reader.lines().enumerate(){
+
+   for (line_num, line_result) in reader.lines().enumerate() {
         let line = line_result?;
 
         let words = line.split_whitespace();
 
         for raw_word in words {
 
-            let cleaned word: String = raw_word 
+            let cleaned_word: String = raw_word 
             .chars()
             .filter(|c| c.alphabetic())
             .collect ::<String>()
@@ -83,4 +84,3 @@ continue
             );
         }
     }
-}
