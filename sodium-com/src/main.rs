@@ -72,4 +72,15 @@ io :; Result <()> {
         if cleaned_word.is_empty (){
 continue
         }
+
+
+        if !dictionary.contains(&cleaned_word){
+
+            mistakes_found += 1;
+            println!(
+                "Line{}: Mistaken Word found -> \"{}\" (original : \"{}\")",
+                line_num +1, cleaned_word , raw_word
+            );
+        }
     }
+}
