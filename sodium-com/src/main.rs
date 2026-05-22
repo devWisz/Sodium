@@ -3,7 +3,6 @@ use std::env;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 use std::path::Path;
-use std::ptr::with_exposed_provenance;
 
 
 fn main ()-> io::Result<()>{
@@ -11,7 +10,7 @@ fn main ()-> io::Result<()>{
     let args: Vec<String> = env :: args().collect();
     if args.len()<2 {
         println!("Usage: cargo run --<path_to_file_to_check>");
-        return Ok();
+        return Ok(());
     }
 
     let file_to_check = &args[1];
@@ -27,14 +26,14 @@ fn main ()-> io::Result<()>{
     };
 
 
-    println!("Checking spelling for: {}..\n,file to check");
+    println!("Checking spelling for: {}..\n",file_to_check);
     check_file_spelling(file_to_check, &dictionary)?;
 
     Ok(())
 } 
 
 
-fn load_dictionary<P: AsRef<Path>>(path:P) -> io::Result<HrashSet<string>>{
+fn load_dictionary<P: AsRef<Path>>(path:P) -> io::Result<HashSet<String>>{
 
     let file = File:: open (path)?;
     let reader = BufReader ::new(file);
@@ -67,7 +66,7 @@ io :: Result <()> {
 
             let cleaned_word: String = raw_word 
             .chars()
-            .filter(|c| c.alphabetic())
+            .filter(|c| c.is_alphabetic())
             .collect ::<String>()
             .to_lowercase();
 
@@ -77,8 +76,7 @@ continue
 
 
         if !dictionary.contains(&cleaned_word){
-
-            mistakes_found += 1;
+            mistake_found += 1;
             println!(
                 "Line{}: Mistaken Word found -> \"{}\" (original : \"{}\")",
                 line_num +1, cleaned_word , raw_word
@@ -88,10 +86,10 @@ continue
 
   }
 
-    if mistakes_found == 0 {
+    if mistake_found == 0 {
         println!(" No spelling mistakes found! Great job.");
     } else {
-        println!("\nTotal spelling errors found: {}", mistakes_found);
+        println!("\nTotal spelling errors found: {}", mistake_found);
     }
 
     Ok(())
