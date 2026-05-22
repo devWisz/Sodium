@@ -3,6 +3,7 @@ use std::env;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 use std::path::Path;
+use std::ptr::with_exposed_provenance;
 
 
 fn main ()-> io::Result<()>{
@@ -83,4 +84,15 @@ continue
                 line_num +1, cleaned_word , raw_word
             );
         }
+        }
+
+  }
+
+    if mistakes_found == 0 {
+        println!(" No spelling mistakes found! Great job.");
+    } else {
+        println!("\nTotal spelling errors found: {}", mistakes_found);
     }
+
+    Ok(())
+}
