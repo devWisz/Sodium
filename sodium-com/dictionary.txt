@@ -1,1 +1,8 @@
-this is testing
+hello
+world
+rust
+programming
+is
+fun
+awesome
+computer

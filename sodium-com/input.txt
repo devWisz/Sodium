@@ -1,1 +1,3 @@
-this is testingg 
+hello world!
+roast programing is asome.
+computer science.
