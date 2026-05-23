@@ -1,1 +1,1 @@
-/mnt/c/Users/sanke/Desktop/Sodium/sodium-com/target/debug/sodium-com: /mnt/c/Users/sanke/Desktop/Sodium/sodium-com/src/main.rs
+C:\Users\sanke\Desktop\Sodium\sodium-com\target\debug\sodium-com.exe: C:\Users\sanke\Desktop\Sodium\sodium-com\src\main.rs

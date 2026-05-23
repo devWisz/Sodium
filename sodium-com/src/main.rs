@@ -78,8 +78,8 @@ continue
         if !dictionary.contains(&cleaned_word){
             mistake_found += 1;
             println!(
-                "Line{}: Mistaken Word found -> \"{}\" (original : \"{}\")",
-                line_num +1, cleaned_word , raw_word
+                "Line{}: Mistaken Word found -> \"{}\")",
+                line_num +1, cleaned_word
             );
         }
         }
@@ -93,4 +93,4 @@ continue
     }
 
     Ok(())
-}
+} 

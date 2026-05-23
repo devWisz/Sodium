@@ -3,6 +3,5 @@ world
 rust
 programming
 is
-fun
 awesome
 computer
