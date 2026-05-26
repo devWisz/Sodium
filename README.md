@@ -3,7 +3,7 @@
 Sodium is a lightweight command-line spell checker built with Rust.It scans text files word by word using a custom dictionary and detects spelling mistakes directly from the terminal.
 ---
 
-
+Directly use from here : https://github.com/devWisz/Sodium/releases/tag/1.0
 
 # Features
 
@@ -118,7 +118,7 @@ rust programming is awesome.
 ```bash
 Loading dictionary.......
 
-Checking spelling for: sample.txt..
+Checking spelling for: input.txt..
 
 Line 2: Mistaken Word found -> "programing"
 Line 2: Mistaken Word found -> "asome"
