@@ -5,6 +5,10 @@ Sodium is a lightweight command-line spell checker built with Rust.It scans text
 
 Directly use from here : https://github.com/devWisz/Sodium/releases/tag/1.0
 
+Screenshot of the Project : 
+<img width="757" height="271" alt="Screenshot 2026-05-26 220102" src="https://github.com/user-attachments/assets/7303bcee-be3e-43e1-bef9-e0e2e61292f4" />
+
+
 # Features
 
 - Fast command-line spell checking
