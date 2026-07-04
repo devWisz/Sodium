@@ -46,7 +46,7 @@ git clone https://github.com/devWisz/Sodium.git
 ## Move Into The Project Directory
 
 ```bash
-cd Sodium
+cd Sodium/sodium-com
 ```
 
 ---
@@ -61,7 +61,11 @@ cargo build
 
 # Running The Project
 
-## Run Directly
+To run the spell checker, you need an input file to check (e.g., `input.txt`) and a dictionary file (`dictionary.txt`). **Both files must be in the current working directory from which you execute the tool.**
+
+## Run Directly with Cargo
+
+Run directly from the `sodium-com` directory:
 
 ```bash
 cargo run -- input.txt
@@ -79,10 +83,34 @@ cargo build --release
 
 ## Run Release Executable
 
-### Windows
+When running the release executable, ensure that `dictionary.txt` and your target input file (e.g., `input.txt`) are present in the directory from which you run the command.
+
+### macOS & Linux
+
+From the `sodium-com` directory:
 
 ```bash
-./target/release/sodium.exe 
+./target/release/sodium-com input.txt
+```
+
+Alternatively, copy the compiled binary `sodium-com` from `target/release/` to any folder containing both `dictionary.txt` and your input file, and run:
+
+```bash
+./sodium-com input.txt
+```
+
+### Windows
+
+From the `sodium-com` directory:
+
+```bash
+.\target\release\sodium-com.exe input.txt
+```
+
+Alternatively, copy the compiled binary `sodium-com.exe` from `target/release/` to any folder containing both `dictionary.txt` and your input file, and run:
+
+```cmd
+sodium-com.exe input.txt
 ```
 
 

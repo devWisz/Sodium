@@ -5,31 +5,35 @@ use std::io::{self, BufRead, BufReader};
 use std::path::Path;
 
 
-fn main ()-> io::Result<()>{
-
-    let args: Vec<String> = env :: args().collect();
-    if args.len()<2 {
-        println!("Usage: cargo run --<path_to_file_to_check>");
-        return Ok(());
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        let exe_name = env::current_exe()
+            .ok()
+            .and_then(|p| p.file_name().map(|s| s.to_string_lossy().into_owned()))
+            .unwrap_or_else(|| "sodium".to_string());
+        eprintln!("Usage: {} <path_to_file_to_check>", exe_name);
+        std::process::exit(1);
     }
 
     let file_to_check = &args[1];
 
     println!("Loading dictionary.......");
     let dictionary_path = "dictionary.txt";
-    let dictionary = match load_dictionary(dictionary_path){
+    let dictionary = match load_dictionary(dictionary_path) {
         Ok(dict) => dict,
         Err(e) => {
-            eprintln!("Error loading dictionary '{}' :{}",dictionary_path,e);
-       return Err(e);
+            eprintln!("Error: Could not load dictionary file '{}': {}", dictionary_path, e);
+            eprintln!("Please make sure '{}' exists in the current working directory.", dictionary_path);
+            std::process::exit(1);
         }
     };
 
-
-    println!("Checking spelling for: {}..\n",file_to_check);
-    check_file_spelling(file_to_check, &dictionary)?;
-
-    Ok(())
+    println!("Checking spelling for: {}..\n", file_to_check);
+    if let Err(e) = check_file_spelling(file_to_check, &dictionary) {
+        eprintln!("Error: Could not read input file '{}': {}", file_to_check, e);
+        std::process::exit(1);
+    }
 } 
 
 
@@ -78,8 +82,8 @@ continue
         if !dictionary.contains(&cleaned_word){
             mistake_found += 1;
             println!(
-                "Line{}: Mistaken Word found -> \"{}\")",
-                line_num +1, cleaned_word
+                "Line {}: Mistaken Word found -> \"{}\"",
+                line_num + 1, cleaned_word
             );
         }
         }
