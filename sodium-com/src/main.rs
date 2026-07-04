@@ -17,7 +17,6 @@ fn pause_and_exit(code: i32) -> ! {
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    // Default to "input.txt" and "dictionary.txt" if not specified by user
     let file_to_check = if args.len() > 1 { &args[1] } else { "input.txt" };
     let dictionary_path = if args.len() > 2 { &args[2] } else { "dictionary.txt" };
 
@@ -37,7 +36,6 @@ fn main() {
         pause_and_exit(1);
     }
 
-    // Pause at the end of a successful check if running interactively in a terminal
     if std::io::stdout().is_terminal() {
         println!("\nPress Enter to exit...");
         let mut input = String::new();
