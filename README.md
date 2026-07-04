@@ -49,14 +49,18 @@ cargo build
 
 ## Running the Tool
 
-To perform spell-checking, you need two files in your current working directory:
-1. **`dictionary.txt`** — The list of correct words (one word per line).
-2. **Your target file** (e.g., `input.txt`) — The file you want to check.
+To perform spell-checking, you need:
+1. **Your target file** (e.g., `input.txt`) — The file you want to check.
+2. **`dictionary.txt`** — The list of correct words (one word per line). By default, the tool looks for `dictionary.txt` in the current working directory, but you can optionally specify a custom dictionary path as a second argument.
 
 ### Option A: Run directly with Cargo
 You can run the project using Cargo from the `sodium-com` directory:
 ```bash
+# Looks for dictionary.txt in the current directory:
 cargo run -- input.txt
+
+# Specifying a custom dictionary path:
+cargo run -- input.txt path/to/dictionary.txt
 ```
 
 ### Option B: Build and run the optimized release binary
@@ -69,20 +73,20 @@ Then, run the compiled binary:
 
 #### macOS & Linux
 ```bash
-# From the sodium-com folder:
-./target/release/sodium-com input.txt
+# Run from any folder by specifying paths to both files:
+./target/release/sodium-com path/to/input.txt path/to/dictionary.txt
 
-# Or copy the executable, dictionary.txt, and input.txt to the same folder and run:
-./sodium-com input.txt
+# Or run from the folder containing both files:
+./target/release/sodium-com input.txt
 ```
 
 #### Windows
 ```cmd
-:: From the sodium-com folder:
-.\target\release\sodium-com.exe input.txt
+:: Run from any folder by specifying paths to both files:
+.\target\release\sodium-com.exe path\to\input.txt path\to\dictionary.txt
 
-:: Or copy the executable, dictionary.txt, and input.txt to the same folder and run:
-sodium-com.exe input.txt
+:: Or run from the folder containing both files:
+.\target\release\sodium-com.exe input.txt
 ```
 
 ---

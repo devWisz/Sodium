@@ -12,19 +12,21 @@ fn main() {
             .ok()
             .and_then(|p| p.file_name().map(|s| s.to_string_lossy().into_owned()))
             .unwrap_or_else(|| "sodium".to_string());
-        eprintln!("Usage: {} <path_to_file_to_check>", exe_name);
+        eprintln!("Usage: {} <path_to_file_to_check> [path_to_dictionary]", exe_name);
         std::process::exit(1);
     }
 
     let file_to_check = &args[1];
+    let dictionary_path = if args.len() > 2 { &args[2] } else { "dictionary.txt" };
 
     println!("Loading dictionary.......");
-    let dictionary_path = "dictionary.txt";
     let dictionary = match load_dictionary(dictionary_path) {
         Ok(dict) => dict,
         Err(e) => {
             eprintln!("Error: Could not load dictionary file '{}': {}", dictionary_path, e);
-            eprintln!("Please make sure '{}' exists in the current working directory.", dictionary_path);
+            if args.len() <= 2 {
+                eprintln!("Please make sure '{}' exists in the current working directory, or specify its path as the second argument.", dictionary_path);
+            }
             std::process::exit(1);
         }
     };
