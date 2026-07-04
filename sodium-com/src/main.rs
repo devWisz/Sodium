@@ -14,24 +14,44 @@ fn pause_and_exit(code: i32) -> ! {
     std::process::exit(code);
 }
 
+fn resolve_file_path(path: &str) -> std::path::PathBuf {
+    let p = Path::new(path);
+    if p.exists() {
+        return p.to_path_buf();
+    }
+    if let Ok(exe_path) = env::current_exe() {
+        let mut current_dir = exe_path.parent();
+        while let Some(dir) = current_dir {
+            let candidate = dir.join(path);
+            if candidate.exists() {
+                return candidate;
+            }
+            current_dir = dir.parent();
+        }
+    }
+    p.to_path_buf()
+}
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
     let file_to_check = if args.len() > 1 { &args[1] } else { "input.txt" };
     let dictionary_path = if args.len() > 2 { &args[2] } else { "dictionary.txt" };
 
+    let resolved_dict_path = resolve_file_path(dictionary_path);
     println!("Loading dictionary.......");
-    let dictionary = match load_dictionary(dictionary_path) {
+    let dictionary = match load_dictionary(&resolved_dict_path) {
         Ok(dict) => dict,
         Err(e) => {
             eprintln!("Error: Could not load dictionary file '{}': {}", dictionary_path, e);
-            eprintln!("Please make sure '{}' exists in the current working directory, or specify its path as the second argument.", dictionary_path);
+            eprintln!("Please make sure '{}' exists in the current working directory or near the executable.", dictionary_path);
             pause_and_exit(1);
         }
     };
 
-    println!("Checking spelling for: {}..\n", file_to_check);
-    if let Err(e) = check_file_spelling(file_to_check, &dictionary) {
+    let resolved_input_path = resolve_file_path(file_to_check);
+    println!("Checking spelling for: {}..\n", resolved_input_path.display());
+    if let Err(e) = check_file_spelling(&resolved_input_path, &dictionary) {
         eprintln!("Error: Could not read input file '{}': {}", file_to_check, e);
         pause_and_exit(1);
     }
