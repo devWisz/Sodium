@@ -1,0 +1,4 @@
+hello world!
+programing is asome.
+computer science.
+rust programming is awesome.

@@ -1,0 +1,8 @@
+hello
+world
+rust
+programming
+is
+awesome
+computer
+science
