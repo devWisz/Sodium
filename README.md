@@ -1,8 +1,8 @@
 # Sodium
 
-Sodium is a lightweight, high-performance command-line spell checker built with Rust. It scans text files word-by-word, checking each against a custom dictionary list using a fast `HashSet` lookup.
+Sodium is a fast, lightweight command line spell checker written in Rust. It checks text files against a custom dictionary using a `HashSet` for quick lookups.
 
-You can download the pre-compiled binaries directly from the [GitHub Releases](https://github.com/devWisz/Sodium/releases/tag/1.0).
+[GitHub Releases] : (https://github.com/devWisz/Sodium/releases/tag/1.0) page.
 
 ---
 
@@ -14,122 +14,99 @@ You can download the pre-compiled binaries directly from the [GitHub Releases](h
 
 ## Features
 
-- **Fast Lookups**: Leverages Rust's standard `HashSet` for highly optimized dictionary lookups.
-- **Minimalist Design**: Zero unnecessary bloat or complex configurations.
-- **Case-Insensitive matching**: Detects misspellings regardless of word capitalization.
-- **Graceful Error Handling**: Clearly notifies you of missing dictionary or input files instead of crashing.
-- **Cross-Platform**: Run the compiled binary natively on macOS, Linux, or Windows.
+* Fast dictionary lookups via Rust `HashSet`
+* Case insensitive word matching
+* Simple error handling for missing files
+* Cross platform support for macOS, Linux, and Windows
 
 ---
 
-## Manual Installation & Setup
+## Installation (Manually)
 
 ### Prerequisites
 
-Ensure you have the following installed on your machine:
-- [Rust & Cargo](https://www.rust-lang.org/tools/install)
-- [Git](https://git-scm.com/)
+* [Rust & Cargo](https://www.rust-lang.org/tools/install)
+* [Git](https://git-scm.com/)
 
-### 1. Clone the Repository
+### Build from source
+
 ```bash
 git clone https://github.com/devWisz/Sodium.git
-```
-
-### 2. Navigate to the Cargo Project
-```bash
 cd Sodium/sodium-com
-```
+cargo build --release
 
-### 3. Build the Project
-```bash
-cargo build
 ```
 
 ---
 
-## Running the Tool
+## Usage
 
-To perform spell-checking, you need:
-1. **Your target file** (e.g., `input.txt`) — The file you want to check.
-2. **`dictionary.txt`** — The list of correct words (one word per line). By default, the tool looks for `dictionary.txt` in the current working directory, but you can optionally specify a custom dictionary path as a second argument.
+Sodium requires an input file to check and a dictionary file containing valid words (one per line). By default, it looks for `dictionary.txt` in your current directory.
 
-### Option A: Run directly with Cargo
-You can run the project using Cargo from the `sodium-com` directory:
+### Running with Cargo
+
 ```bash
-# Looks for dictionary.txt in the current directory:
 cargo run -- input.txt
-
-# Specifying a custom dictionary path:
 cargo run -- input.txt path/to/dictionary.txt
+
 ```
 
-### Option B: Build and run the optimized release binary
-Build the release executable:
+### Running the compiled binary
+
+#### macOS and Linux
+
 ```bash
-cargo build --release
-```
+./target/release/sodium-com input.txt path/to/dictionary.txt
 
-Then, run the compiled binary:
-
-#### macOS & Linux
-```bash
-# Run from any folder by specifying paths to both files:
-./target/release/sodium-com path/to/input.txt path/to/dictionary.txt
-
-# Or run from the folder containing both files:
-./target/release/sodium-com input.txt
 ```
 
 #### Windows
-```cmd
-:: Run from any folder by specifying paths to both files:
-.\target\release\sodium-com.exe path\to\input.txt path\to\dictionary.txt
 
-:: Or run from the folder containing both files:
-.\target\release\sodium-com.exe input.txt
+```cmd
+.\target\release\sodium-com.exe input.txt path\to\dictionary.txt
+
 ```
 
 ---
 
-## File Formats & Example
+## Example
 
-### Dictionary Format (`dictionary.txt`)
-A plain text file containing one valid lowercase/uppercase word per line.
+### `dictionary.txt`
+
 ```text
 hello
 world
 rust
 programming
-is
-awesome
-computer
-science
+
 ```
 
-### Input File Format (`input.txt`)
-The text document you want to check for spelling errors.
+### `input.txt`
+
 ```text
 hello world!
-programing is asome.
-computer science.
-rust programming is awesome.
+programing is awesome.
+
 ```
 
-### Expected Output
+### Output
+
 ```text
 Loading dictionary.......
 Checking spelling for: input.txt..
 
 Line 2: Mistaken Word found -> "programing"
-Line 2: Mistaken Word found -> "asome"
 
-Total spelling errors found: 2
+Total spelling errors found: 1
+
 ```
 
 ---
 
-## Open Source & Contributions
+## License and Contributions
+Sodium is open source. Pull requests and issues are welcome.
 
-Sodium is fully open-source. Contributions, forks, and feature requests are welcome!
+Created by Sarjak Khanal (devWisZ).
+Sodium is open source. Pull requests and issues are welcome.
 
-Developed with ❤️ by **devWisZ** (Sarjak Khanal).
+Created by Sarjak Khanal (devWisZ).
