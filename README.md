@@ -106,7 +106,5 @@ Total spelling errors found: 1
 ## License and Contributions
 Sodium is open source. Pull requests and issues are welcome.
 
-Created by Sarjak Khanal (devWisZ).
-Sodium is open source. Pull requests and issues are welcome.
+Developed by Sarjak Khanal (devWisZ).
 
-Created by Sarjak Khanal (devWisZ).
